@@ -1,262 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Database Products</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DataNexus - Database Products</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    body {
-      font-family:'Roboto', sans-serif;
-      margin: 0;
-      background: #f9fbff;
-      color: #333;
+    :root{
+      --brand:#2563eb;
+      --brand-dark:#1e40af;
+      --bg:#f6f8fc;
+      --text:#1f2937;
     }
 
-    /* Navbar */
-    header {
-      width: 100%;
-      padding: 15px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      position: fixed;
-      top: 0;
-      left: -20px;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:var(--bg);
+      overflow-x:hidden; /* prevent any horizontal bleed */
+    }
+    .no-scroll{overflow:hidden;}
+
+    /* ---------- Header ---------- */
+    header{
+      position:fixed; inset:0 0 auto 0;
+      height:66px;
+      background:#fff;
+      display:flex; align-items:center; gap:16px;
+      padding:10px 20px;
+      z-index:1000;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .nav-wrap{
+      max-width:1200px; margin:0 auto; width:100%;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .logo img{height:40px; display:block}
+
+    .nav-links{display:flex; gap:26px; align-items:center}
+    .nav-links a{
+      text-decoration:none; color:#374151; font-weight:500;
+    }
+    .nav-links a:hover{color:var(--brand)}
+
+    .btn-nav{
+      background:var(--brand); color:#fff; border:0; border-radius:8px;
+      padding:10px 14px; font-weight:600; cursor:pointer;
+    }
+    .btn-nav:hover{background:var(--brand-dark)}
+
+    .hamburger{
+      display:none; background:none; border:0; font-size:24px; cursor:pointer;
     }
 
-   
-     .logo {
-      display: flex;
-      align-items: center;
-      font-size: 20px;
-      font-weight: 700;
-      color: #1e3a8a;
+    /* ---------- Mobile Drawer + Overlay ---------- */
+    .overlay{
+      position:fixed; inset:0; background:rgba(0,0,0,.45);
+      opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:999;
+    }
+    .overlay.active{opacity:1; pointer-events:auto;}
+
+    .mobile-nav{
+      position:fixed; top:0; right:0; bottom:0;
+      width:min(80vw, 320px);
+      background:#fff; box-shadow:-2px 0 16px rgba(0,0,0,.15);
+      transform:translateX(100%); transition:transform .28s ease;
+      padding:74px 22px 22px; z-index:1001;
+      display:flex; flex-direction:column; gap:18px;
+    }
+    .mobile-nav.active{transform:translateX(0)}
+    .mobile-nav a{
+      text-decoration:none; color:#111827; font-weight:600; padding:6px 0; border-bottom:1px solid #eee;
+    }
+    .mobile-close{
+      position:absolute; right:14px; top:16px; font-size:22px; cursor:pointer;
     }
 
-    .logo img {
-      width: 210px;
-      margin-right: 10px;
+    /* ---------- Hero ---------- */
+    .hero{
+      margin-top:66px;
+      background:linear-gradient(90deg,#1976d2,#0d47a1);
+      color:#fff; text-align:center; padding:56px 16px 40px;
+    }
+    .hero h1{margin:0 0 8px; font-size:clamp(24px,3.2vw,40px)}
+    .hero p{margin:0 0 16px; font-size:clamp(14px,2.2vw,19px)}
+    .badge{
+      display:inline-block; padding:6px 14px; border-radius:999px; font-size:13px;
+      background:rgba(255,255,255,.2);
+      backdrop-filter:saturate(160%) blur(2px);
     }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
-      margin: 0;
-      padding: 20px;
-      
+    /* ---------- Cards ---------- */
+    .cards{
+      max-width:1200px; margin:26px auto; padding:0 16px;
+      display:grid; gap:22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-
-    nav ul li a {
-      text-decoration: none;
-      font-weight: 520;
-      color: #333;
-      transition: color 0.3s ease;
+    .card{
+      background:#fff; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,.08);
+      padding:22px; position:relative; display:flex; flex-direction:column; gap:10px;
     }
-
-    nav ul li a:hover {
-      color: #2563eb;
+    .verified{
+      position:absolute; right:14px; top:14px;
+      background:#e6f9ec; color:#047857; font-size:12px; padding:4px 10px; border-radius:999px; font-weight:700;
     }
-
-    .btn-nav {
-      background: #ffffff;
-      color: #fff;
-      border: none;
-      left: -10px;
-      padding: 10px 10px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
+    .card-icon{font-size:36px; color:#0f6ae0}
+    .card h3{margin:6px 0 2px; font-size:18px}
+    .card p{margin:0 0 6px; color:#4b5563; line-height:1.5}
+    .features{list-style:none; padding:0; margin:8px 0 10px}
+    .features li{margin:8px 0; font-size:15px}
+    .features li::before{content:"✔"; color:#059669; font-weight:900; margin-right:8px}
+    .price{font-weight:800; font-size:22px; color:#0f6ae0}
+    .payment-tag{display:inline-block; margin-left:8px; background:#eaf9f1; color:#047857; font-size:12px; padding:4px 10px; border-radius:999px}
+    .btn{
+      display:inline-block; text-align:center; text-decoration:none;
+      background:#0f6ae0; color:#fff; border-radius:8px; padding:12px 16px; font-weight:800; margin-top:8px;
     }
+    .btn:hover{background:#0b55b3}
 
-    .btn-nav:hover {
-      background: #1e40af;
-      transform: scale(1.05);
+    /* ---------- Features section ---------- */
+    .features-section{background:#f1f3f5; padding:56px 16px}
+    .features-section h2{margin:0 0 26px; text-align:center; font-size:clamp(22px,2.6vw,30px)}
+    .features-container{
+      max-width:1100px; margin:0 auto; display:grid; gap:24px;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
     }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(to right, #1976d2, #0d47a1);
-      text-align: center;
-      padding: 80px 20px 50px;
-      color: white;
-      margin-top: 70px;
+    .feature-box{background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .feature-icon{
+      width:60px; height:60px; border-radius:50%;
+      display:grid; place-items:center; margin:0 auto 12px; font-size:26px;
     }
+    .green{background:#e6f4ea; color:#0f9d58}
+    .blue{background:#e8f0fe; color:#4285f4}
+    .teal{background:#e6f4f1; color:#0f9d58}
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    /* ---------- Custom DB ---------- */
+    .custom-database{max-width:900px; margin:40px auto; text-align:center; padding:0 16px}
+    .btn-contact{
+      display:inline-block; padding:12px 20px; border:1px solid #d1d5db; border-radius:8px; text-decoration:none; color:#111827;
     }
+    .btn-contact:hover{background:#f8f8f8}
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+    /* ---------- Footer ---------- */
+    footer{background:#fff; margin-top:40px; border-top:1px solid #e5e7eb}
+    .footer{
+      max-width:1200px; margin:0 auto; padding:32px 16px;
+      display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
     }
+    .footer h4{margin:0 0 8px; font-size:16px}
+    .footer ul{list-style:none; padding:0; margin:0}
+    .footer li{margin:6px 0}
+    .footer a{text-decoration:none; color:#4b5563}
+    .footer a:hover{color:var(--brand)}
+    .footer-bottom{border-top:1px solid #e5e7eb; text-align:center; padding:14px; font-size:13px; color:#6b7280}
 
-    .badge {
-      display: inline-block;
-      padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-
-    /* Container */
-    .container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 40px 20px;
-      flex-wrap: wrap;
-    }
-
-    /* Card */
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 25px;
-      width: 320px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card-icon {
-      font-size: 40px;
-      color: #0066e7;
-      margin-bottom: 15px;
-    }
-
-    .verified {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #e6f9ec;
-      color: #008f4c;
-      font-size: 0.85rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-weight: bold;
-    }
-
-    .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 15px;
-    }
-
-    .features {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 20px;
-    }
-
-    .features li {
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-      color: #333;
-    }
-
-    .features li::before {
-      content: "✔ ";
-      color: #00b33c;
-      font-weight: bold;
-    }
-
-    .price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #0066e7;
-    }
-
-    .payment-tag {
-      display: inline-block;
-      background: #eaf9f1;
-      color: #00a650;
-      font-size: 0.85rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-left: 10px;
-    }
-
-    .btn {
-      display: block;
-      width: 90%;
-      text-align: center;
-      background: #0066e7;
-      color: white;
-      padding: 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-    .btn:hover {
-      background: #004bb5;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-      }
-      nav ul {
-        display: none; /* hide menu in mobile (can add burger later) */
-      }
+    /* ---------- Breakpoints ---------- */
+    @media (max-width: 920px){
+      .nav-links, .btn-nav{display:none}
+      .hamburger{display:block}
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Overlay & Mobile Drawer -->
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+  <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <span class="mobile-close" onclick="closeMenu()" aria-label="Close menu"><i class="fa fa-times"></i></span>
+    <a href="index.html">Home</a>
+    <a href="2.html">Products</a>
+    <a href="3.html">About Us</a>
+    <a href="4.html">Contact</a>
+    <a href="2.html" style="color:#2563eb">Buy Now</a>
+  </nav>
+
+  <!-- Header -->
   <header>
-     <div class="logo">
-      <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="logo">
-      
+    <div class="nav-wrap">
+      <a class="logo" href="index.html" aria-label="DataNexus Home">
+        <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="DataNexus logo">
+      </a>
+
+      <div class="nav-links" role="navigation" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="2.html">Products</a>
+        <a href="3.html">About Us</a>
+        <a href="4.html">Contact</a>
+      </div>
+
+      <button class="btn-nav" onclick="location.href='2.html'">Buy Now</button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" onclick="openMenu()">
+        <i class="fa fa-bars"></i>
+      </button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="2.html">Products</a></li>
-        <li><a href="3.html">About Us</a></li>
-        <li><a href="4.html">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="btn-nav">Buy Now</button>
   </header>
 
-  <!-- Hero Section -->
-  <div class="hero">
+  <!-- Hero -->
+  <section class="hero">
     <h1>Our Database Products</h1>
     <p>Choose from our verified, high-quality college databases</p>
     <span class="badge">All databases are 99% verified and regularly updated</span>
-  </div>
+  </section>
 
-  <!-- Cards Section -->
-  <div class="container">
-
-    <!-- Arts & Science Card -->
-    <div class="card">
-      <div class="verified">99% Verified</div>
+  <!-- Product Cards -->
+  <section class="cards" aria-label="Products">
+    <!-- Arts & Science -->
+    <article class="card">
+      <span class="verified">99% Verified</span>
       <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-      <h3>Arts & Science Colleges Database</h3>
-      <p>Complete database of 150 arts and science colleges with emails, principal and placement officer contact numbers.</p>
+      <h3>Arts &amp; Science Colleges Database</h3>
+      <p>Complete database of 150 arts &amp; science colleges with emails, principal and placement officer contacts.</p>
       <ul class="features">
-        <li>100+ Arts & Science Colleges</li>
-        <li>Principal Contact Numbers</li>
+        <li>100+ Arts &amp; Science Colleges</li>
+        <li>Principal Contacts</li>
         <li>Placement Officer Numbers</li>
         <li>Email Addresses</li>
       </ul>
@@ -264,22 +224,18 @@
         <span class="price">₹999</span>
         <span class="payment-tag">One-time Payment</span>
       </div>
-     <a href="https://wa.me/919876543210?text=I+want+Arts+%26+Science+Colleges+Database" 
-   target="_blank"
-   style="display:inline-block;padding:10px 108px;background:#0f50aa;color:#fff;font-size:18px;border-radius:8px;text-decoration:none;">
-   Buy Now
-</a>
-    </div>
+      <a class="btn" target="_blank" rel="noopener" href="https://wa.me/919876543210?text=I+want+Arts+%26+Science+Colleges+Database">Buy Now</a>
+    </article>
 
-    <!-- Arts & Science Card -->
-    <div class="card">
-      <div class="verified">99% Verified</div>
+    <!-- Engineering -->
+    <article class="card">
+      <span class="verified">99% Verified</span>
       <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
       <h3>Engineering Colleges Database</h3>
-      <p>Complete database of 150 arts and science colleges with emails, principal and placement officer contact numbers.</p>
+      <p>Curated contact list of engineering colleges with verified principal and placement officer information.</p>
       <ul class="features">
-        <li>60+ Engineering Colleges Database</li>
-        <li>Principal Contact Numbers</li>
+        <li>60+ Engineering Colleges</li>
+        <li>Principal Contacts</li>
         <li>Placement Officer Numbers</li>
         <li>Email Addresses</li>
       </ul>
@@ -287,23 +243,18 @@
         <span class="price">₹999</span>
         <span class="payment-tag">One-time Payment</span>
       </div>
-      <a href="https://wa.me/919876543210?text=I+want+Engineering+Colleges+Database" 
-   target="_blank"
-   style="display:inline-block;padding:10px 108px;background:#0f50aa;color:#fff;font-size:18px;border-radius:8px;text-decoration:none;">
-   Buy Now
-</a>
-    </div>
+      <a class="btn" target="_blank" rel="noopener" href="https://wa.me/919876543210?text=I+want+Engineering+Colleges+Database">Buy Now</a>
+    </article>
 
-
-    <!-- Engineering Card -->
-    <div class="card">
-      <div class="verified">99% Verified</div>
-      <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i><i class="fa-solid fa-building-columns"></i></div>
-      <h3>Arts & Science Colleges,Engineering Colleges Database</h3>
-      <p>Complete database of 150 engineering colleges with emails, principal and placement officer contact numbers.</p>
+    <!-- Combo -->
+    <article class="card">
+      <span class="verified">99% Verified</span>
+      <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i> <i class="fa-solid fa-building-columns"></i></div>
+      <h3>Arts &amp; Science + Engineering (Combo)</h3>
+      <p>Best value: both datasets combined with the latest verified contacts and emails.</p>
       <ul class="features">
-        <li>200+ Arts & Science,Engineering Colleges</li>
-        <li>Principal Contact Numbers</li>
+        <li>200+ Colleges Total</li>
+        <li>Principal Contacts</li>
         <li>Placement Officer Numbers</li>
         <li>Email Addresses</li>
       </ul>
@@ -311,268 +262,56 @@
         <span class="price">₹1599</span>
         <span class="payment-tag">One-time Payment</span>
       </div>
-      <a href="https://wa.me/919876543210?text=I%20want%20Arts%20%26%20Science%20Colleges%20and%20Engineering%20Colleges%20Database" 
-   target="_blank"
-   style="display:inline-block;padding:10px 108px;background:#0f50aa;color:#fff;font-size:18px;border-radius:8px;text-decoration:none;">
-   Buy Now
-</a>
-    </div>
+      <a class="btn" target="_blank" rel="noopener" href="https://wa.me/919876543210?text=I%20want%20Arts%20%26%20Science%20Colleges%20and%20Engineering%20Colleges%20Database">Buy Now</a>
+    </article>
+  </section>
 
-  </div>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Why Our Databases Are Different</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f1f3f5;
-      color: #333;
-    }
-
-    .features-section {
-      text-align: center;
-      padding: 0px 0px;
-    }
-
-    .features-section h2 {
-      font-size: 28px;
-      margin-bottom: 40px;
-      font-weight: 700;
-      color: #222;
-    }
-
-    .features-container {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .feature-box {
-      background: transparent;
-      text-align: center;
-      width: 250px;
-      padding: 20px;
-    }
-
-    .feature-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 15px;
-      font-size: 28px;
-    }
-
-    .feature-icon.green {
-      background: #e6f4ea;
-      color: #0f9d58;
-    }
-
-    .feature-icon.blue {
-      background: #e8f0fe;
-      color: #4285f4;
-    }
-
-    .feature-icon.teal {
-      background: #e6f4f1;
-      color: #0f9d58;
-    }
-
-    .feature-box h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .feature-box p {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.5;
-    }
-
-  .custom-database {
-  text-align: center;
-  margin: 60px 0;   /* adds spacing top and bottom */
-  padding: 40px 20px;
-}
-
-.custom-database h3 {
-  font-size: 24px;
-  margin-bottom: 12px;
-}
-
-.custom-database p {
-  font-size: 16px;
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.custom-database .btn-contact {
-  display: inline-block;
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 12px 28px;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s;
-  text-decoration: none;
-  color: #333;
-}
-
-.custom-database .btn-contact:hover {
-  background: #f8f8f8;
-  border-color: #bbb;
-}
-
-
-    
-    /* Footer */
-    .footer {
-      background: #fff;
-      padding: 40px 80px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      border-top: 1px solid #ddd;
-    }
-
-    .footer-col {
-      flex: 1;
-      margin: 20px;
-      min-width: 200px;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .footer-logo img {
-      width: 180px;
-      height: 60px;
-    }
-
-    .footer-logo h3 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .footer p {
-      font-size: 14px;
-      color: #555;
-      margin: 8px 0;
-    }
-
-    .footer h4 {
-      font-size: 16px;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    .footer ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer ul li {
-      margin: 6px 0;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .footer ul li a {
-      text-decoration: none;
-      color: #555;
-      transition: color 0.3s;
-    }
-
-    .footer ul li a:hover {
-      color: #0066ff;
-    }
-
-    /* Copyright */
-    .footer-bottom {
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      color: #555;
-      border-top: 1px solid #ddd;
-      background: #fff;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Features Section -->
+  <!-- Why Different -->
   <section class="features-section">
     <h2>Why Our Databases Are Different</h2>
     <div class="features-container">
       <div class="feature-box">
         <div class="feature-icon green"><i class="fas fa-check-circle"></i></div>
-        <h3>99% Accuracy</h3>
-        <p>All data is manually verified and regularly updated</p>
+        <h4>99% Accuracy</h4>
+        <p>All data is manually verified and regularly updated.</p>
       </div>
-
       <div class="feature-box">
         <div class="feature-icon blue"><i class="fas fa-database"></i></div>
-        <h3>Fresh Data</h3>
-        <p>Monthly updates ensure you get the latest information</p>
+        <h4>Fresh Data</h4>
+        <p>Monthly updates ensure you get the latest information.</p>
       </div>
-
       <div class="feature-box">
         <div class="feature-icon teal"><i class="fas fa-user-friends"></i></div>
-        <h3>Trusted Source</h3>
-        <p>Used by 500+ businesses for their growth needs</p>
+        <h4>Trusted Source</h4>
+        <p>Used by 500+ businesses for their growth needs.</p>
       </div>
     </div>
+  </section>
 
-   <!-- Custom Database Section -->
-<div class="custom-database">
-  <h3>Need a Custom Database?</h3>
-  <p>Contact us for custom database solutions tailored to your specific business needs.</p>
-  <a href="4.html" class="btn-contact">Contact Us</a>
-</div>
+  <!-- Custom DB -->
+  <section class="custom-database">
+    <h3>Need a Custom Database?</h3>
+    <p>Contact us for custom database solutions tailored to your specific business needs.</p>
+    <a href="4.html" class="btn-contact">Contact Us</a>
+  </section>
 
-
-  
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer>
     <div class="footer">
-      <div class="footer-col">
-        <div class="footer-logo">
-          <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="Logo">
-          
-        </div>
-        <p>Trusted Data Provider</p
-        <p>Providing authentic, verified business databases for growth.</p>
+      <div>
+        <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="DataNexus" style="height:48px">
+        <p style="margin-top:10px;color:#4b5563">Providing authentic, verified business databases for growth.</p>
       </div>
-
-      <div class="footer-col">
+      <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Order Now</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="2.html">Products</a></li>
+          <li><a href="3.html">About Us</a></li>
+          <li><a href="4.html">Order Now</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
+      <div>
         <h4>Services</h4>
         <ul>
           <li>99% Accurate Data</li>
@@ -581,8 +320,7 @@
           <li>24/7 Support</li>
         </ul>
       </div>
-
-      <div class="footer-col">
+      <div>
         <h4>Contact Us</h4>
         <ul>
           <li>📞 +91 7845032288</li>
@@ -591,18 +329,26 @@
         </ul>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      © 2025 DataNexus. All rights reserved. Trusted Data Provider.
-    </div>
+    <div class="footer-bottom">© 2025 DataNexus. All rights reserved.</div>
   </footer>
 
+  <script>
+    const body = document.body;
+    const overlay = document.getElementById('overlay');
+    const drawer = document.getElementById('mobileNav');
+
+    function openMenu(){
+      drawer.classList.add('active');
+      overlay.classList.add('active');
+      body.classList.add('no-scroll');
+    }
+    function closeMenu(){
+      drawer.classList.remove('active');
+      overlay.classList.remove('active');
+      body.classList.remove('no-scroll');
+    }
+    // close drawer on ESC
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+  </script>
 </body>
 </html>
-
-
-</body>
-</html>
-
-
-
