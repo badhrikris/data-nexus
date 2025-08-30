@@ -3,105 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - DataNexus</title>
-
-  <!-- ✅ Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <title>About Us - DataNexus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    * {
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f9fbfd;
+      background: #fff;
       color: #333;
+      line-height: 1.6;
     }
 
     /* Navbar */
-    nav {
-      width: 100%;
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 25px;
+      padding: 15px 20px;
       background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
     .logo img {
-      width: 180px;
+      height: 45px;
     }
 
-    .nav-links {
+    nav {
       display: flex;
-      gap: 25px;
     }
 
-    .nav-links a {
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
-      transition: 0.3s;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #0073e6;
-      font-weight: 600;
+    nav ul li a:hover {
+      color: #007bff;
     }
 
     .buy-btn {
-      background: #0073e6;
+      background: #007bff;
       color: #fff;
       padding: 8px 18px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      white-space: nowrap;
     }
 
-    .buy-btn:hover {
-      background: #005bb5;
-    }
-
-    /* Hamburger */
+    /* Hamburger Menu */
     .menu-toggle {
       display: none;
-      font-size: 1.8rem;
+      font-size: 24px;
       cursor: pointer;
-      color: #333;
     }
 
     @media (max-width: 768px) {
-      .nav-links {
+      nav {
         position: absolute;
         top: 65px;
         right: 0;
         background: #fff;
-        width: 220px;
-        flex-direction: column;
+        width: 200px;
         display: none;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        padding: 15px;
+        flex-direction: column;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       }
 
-      .nav-links.show {
+      nav.show {
         display: flex;
       }
 
-      .nav-links a {
-        padding: 10px 0;
+      nav ul {
+        flex-direction: column;
+        width: 100%;
       }
 
-      .buy-btn {
-        display: none;
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
       }
 
       .menu-toggle {
@@ -109,317 +105,349 @@
       }
     }
 
-    /* Contact Hero */
-    .contact-hero {
-      background: linear-gradient(to right, #0073e6, #005bb5);
+    /* Hero */
+    .about-hero {
       text-align: center;
+      background: linear-gradient(to right, #1976d2, #0d47a1);
       color: #fff;
       padding: 60px 20px;
     }
 
-    .contact-hero h1 {
-      font-size: 36px;
+    .about-hero h1 {
+      font-size: 32px;
       margin-bottom: 10px;
     }
 
-    .contact-hero p {
+    .about-hero p {
       font-size: 18px;
-      opacity: 0.9;
+      color: #e3f2fd;
     }
 
-    /* Help Section */
-    .help-section {
+    /* Mission */
+    .mission {
       text-align: center;
       padding: 60px 20px;
     }
 
-    .help-section h2 {
-      font-size: 28px;
-      margin-bottom: 40px;
+    .mission h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
     }
 
-    .help-cards {
+    .mission p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .mission-cards {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
     .card {
       background: #fff;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      width: 300px;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 25px;
+      width: 280px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       text-align: center;
-      transition: 0.3s;
+      transition: transform 0.2s;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .card-icon {
       font-size: 40px;
-      background: #eaf3ff;
-      color: #0073e6;
-      padding: 15px;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    /* Achievements */
+    .achievements {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(to right, #f5fbff, #f6fffa);
+    }
+
+    .achievements h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .achievements-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .achievement {
+      width: 150px;
+    }
+
+    .achievement .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: #fff;
       border-radius: 50%;
-      margin-bottom: 20px;
-      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      font-weight: bold;
+    .achievement .icon i {
+      font-size: 32px;
+      color: #0066ff;
     }
 
-    .card p {
-      margin-bottom: 10px;
-      color: #555;
-      font-size: 14px;
-    }
-
-    .card strong {
-      display: block;
+    .achievement h3 {
+      font-size: 22px;
+      color: #0066ff;
       margin: 10px 0;
-      color: #222;
     }
 
-    .green-text {
-      color: #28a745;
+    .achievement p {
       font-size: 14px;
+      color: #555;
     }
 
-    .card button {
-      margin-top: 10px;
-      padding: 10px 18px;
-      border: 1px solid #0073e6;
-      background: #fff;
-      color: #0073e6;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: bold;
-    }
-
-    .card button:hover {
-      background: #0073e6;
-      color: #fff;
-    }
-
-    /* Footer */
-    .custom-footer {
-      background: #fff;
-      color: #333;
-      padding: 50px 20px 20px;
-      border-top: 1px solid #ddd;
-      font-family: Arial, sans-serif;
-      margin-top: 50px;
-    }
-
-    .custom-footer-container {
+    /* Story Section */
+    .story-section {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
+      align-items: flex-start;
+      padding: 60px 20px;
+      gap: 40px;
       max-width: 1200px;
       margin: auto;
-      gap: 40px;
+      flex-wrap: wrap;
     }
 
-    .custom-footer-section {
+    .story-text {
       flex: 1;
-      min-width: 220px;
+      min-width: 280px;
     }
 
-    .custom-footer-logo img {
-      width: 180px;
-      margin-bottom: 10px;
+    .story-text h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
     }
 
-    .custom-footer-subtitle {
-      font-weight: bold;
-      color: #444;
-      margin: 5px 0;
-    }
-
-    .custom-footer-section h3 {
-      margin-bottom: 15px;
-      font-size: 16px;
-      font-weight: bold;
-      color: #222;
-    }
-
-    .custom-footer-section p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .custom-footer-section ul {
+    .story-text ul {
       list-style: none;
       padding: 0;
     }
 
-    .custom-footer-section ul li {
+    .story-text ul li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .story-text ul li i {
+      color: #00b853;
+      margin-right: 10px;
+    }
+
+    .choose-box {
+      flex: 1;
+      min-width: 280px;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+ .custom-footer-subtitle {
+      font-weight: bold;
+      color: #444;
+      margin: 5px 0;
+    }
+    .choose-box h3 {
+      margin-bottom: 20px;
+    }
+
+    .choose-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .choose-item i {
+      font-size: 20px;
+      color: #0066ff;
+      margin-right: 12px;
+      padding: 10px;
+      background: #f2f7ff;
+      border-radius: 50%;
+    }
+
+    /* Footer */
+    footer {
+      background: #f9f9f9;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo img {
+      height: 45px;
       margin-bottom: 10px;
-      font-size: 14px;
-      color: #555;
     }
 
-    .custom-footer-section ul li a {
-      text-decoration: none;
-      color: #555;
-      transition: 0.3s;
+    .footer-column h4 {
+      margin-bottom: 15px;
     }
 
-    .custom-footer-section ul li a:hover {
-      color: #0073e6;
-    }
-
-    .custom-contact li i {
-      margin-right: 8px;
-      color: #0073e6;
-    }
-
-    .custom-footer-bottom {
+    .footer-bottom {
       text-align: center;
-      margin-top: 30px;
-      padding-top: 15px;
-      border-top: 1px solid #ddd;
-    }
-
-    .custom-footer-bottom p {
+      padding: 15px;
       font-size: 13px;
-      color: #888;
+      color: #555;
+      border-top: 1px solid #ddd;
+      background: #fff;
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav>
+  <header>
     <div class="logo">
       <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="logo">
     </div>
     <i class="fas fa-bars menu-toggle"></i>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="2.html">Products</a>
-      <a href="3.html">About Us</a>
-      <a href="4.html" class="active">Contact</a>
-    </div>
-    <a href="#" class="buy-btn">Buy Now</a>
-  </nav>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="2.html">Products</a></li>
+        <li><a href="3.html" class="active">About Us</a></li>
+        <li><a href="4.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="buy.html" class="buy-btn">Buy Now</a>
+  </header>
 
-  <!-- Contact Hero -->
-  <section class="contact-hero">
-    <h1>Contact Us</h1>
-    <p>Get in touch with our support team for any assistance</p>
+  <!-- Hero -->
+  <section class="about-hero">
+    <h1>About DataTrust</h1>
+    <p>Your trusted partner for authentic, verified business data</p>
   </section>
 
-  <!-- Help Section -->
-  <section class="help-section">
-    <h2>How Can We Help You?</h2>
-    <div class="help-cards">
-      
-      <!-- Phone Support -->
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-phone-alt"></i></div>
-        <h3>Phone Support</h3>
-        <p>Call us for assistance</p>
-        <strong>+91 7845032288</strong>
-        <p class="green-text">9 AM - 9 PM</p>
-        <a href="tel:+917845032288"><button>Contact Now</button></a>
-      </div>
+  <!-- Mission -->
+  <section class="mission">
+    <h2>Our Mission</h2>
+    <p>We provide authentic, updated data for business growth with an unwavering focus on accuracy and reliability...</p>
 
-      <!-- Email Support -->
+    <div class="mission-cards">
       <div class="card">
-        <div class="card-icon"><i class="fas fa-envelope"></i></div>
-        <h3>Email Support</h3>
-        <p>Send us your queries via email</p>
-        <strong>datanexus.in@gmail.com</strong>
-        <p class="green-text">24/7 Response</p>
-        <a href="mailto:datanexus.in@gmail.com" target="_blank"><button>Contact Now</button></a>
+        <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+        <h3>Accuracy First</h3>
+        <p>We ensure 99% data accuracy...</p>
       </div>
-
-      <!-- WhatsApp Support -->
       <div class="card">
-        <div class="card-icon"><i class="fab fa-whatsapp"></i></div>
-        <h3>WhatsApp Support</h3>
-        <p>Quick support via WhatsApp</p>
-        <strong>+91 7845032288</strong>
-        <p class="green-text">24/7 Available</p>
-        <a href="https://wa.me/917845032288" target="_blank"><button>Contact Now</button></a>
+        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Reliability</h3>
+        <p>Our databases are trusted by thousands...</p>
       </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Focused Approach</h3>
+        <p>We specialize in business databases...</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Achievements -->
+  <section class="achievements">
+    <h2>Our Achievements</h2>
+    <div class="achievements-container">
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-award"></i></div>
+        <h3>99%</h3>
+        <p>Data Accuracy</p>
+      </div>
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-users"></i></div>
+        <h3>5000+</h3>
+        <p>Happy Clients</p>
+      </div>
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>24/7</h3>
+        <p>Support</p>
+      </div>
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-bolt"></i></div>
+        <h3>100%</h3>
+        <p>Secure</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="story-section">
+    <div class="story-text">
+      <h2>Our Story</h2>
+      <p>Founded with the vision of providing businesses...</p>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Manual verification</li>
+        <li><i class="fas fa-check-circle"></i> Regular updates</li>
+        <li><i class="fas fa-check-circle"></i> 24/7 support</li>
+      </ul>
+    </div>
+    <div class="choose-box">
+      <h3>Why Choose Us?</h3>
+      <div class="choose-item"><i class="fas fa-bullseye"></i><div><h4>Precision</h4><p>Manually verified data</p></div></div>
+      <div class="choose-item"><i class="fas fa-shield-alt"></i><div><h4>Security</h4><p>Secure payments</p></div></div>
+      <div class="choose-item"><i class="fas fa-headset"></i><div><h4>Support</h4><p>Available 24/7</p></div></div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="custom-footer">
-    <div class="custom-footer-container">
-
-      <!-- Logo & About -->
-      <div class="custom-footer-section">
-        <div class="custom-footer-logo">
-          <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="Logo" />
-        </div>
-        <p class="custom-footer-subtitle">Trusted Data Provider</p>
-        <p>Providing authentic, verified business databases for growth.</p>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="custom-footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Order Now</a></li>
-        </ul>
-      </div>
-
-      <!-- Services -->
-      <div class="custom-footer-section">
-        <h3>Services</h3>
-        <ul>
-          <li>99% Accurate Data</li>
-          <li>Secure UPI Payments</li>
-          <li>Fast Email Delivery</li>
-          <li>24/7 Support</li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="custom-footer-section">
-        <h3>Contact Us</h3>
-        <ul class="custom-contact">
-          <li><i class="fas fa-phone"></i> +91 7845032288</li>
-          <li><i class="fas fa-envelope"></i> datanexus.in@gmail.com</li>
-          <li><i class="fab fa-whatsapp"></i> WhatsApp Support</li>
-        </ul>
-      </div>
-
+  <footer>
+    <div class="footer-logo">
+      <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="DataNexus">
+      <p class="custom-footer-subtitle">Trusted Data Provider</p>
+        <p>Providing authentic, verified business <br>databases for growth.</p>
     </div>
-
-    <!-- Bottom -->
-    <div class="custom-footer-bottom">
-      <p>© 2025 DataNexus. All rights reserved. Trusted Data Provider.</p>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul><li>Home</li><li>Products</li><li>About Us</li><li>Order Now</li></ul>
+    </div>
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul><li>99% Accurate Data</li><li>Secure Payments</li><li>Fast Delivery</li><li>24/7 Support</li></ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><i class="fas fa-phone"></i> +91 7845032288</li>
+        <li><i class="fas fa-envelope"></i> datanexus.in@gmail.com</li>
+        <li><i class="fab fa-whatsapp"></i> WhatsApp Support</li>
+      </ul>
     </div>
   </footer>
+  <div class="footer-bottom">© 2025 DataNexus. All rights reserved.</div>
 
-  <!-- ✅ JS for Hamburger -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
+    const nav = document.querySelector('nav');
     menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+      nav.classList.toggle('show');
     });
   </script>
-
 </body>
 </html>
