@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DataNexus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  overflow-x: hidden;
+
+  /* Background Image */
+  background: url('https://www.racksolutions.com/news//app/uploads/AdobeStock_87909563.jpg')
+              no-repeat center center fixed;
+  background-size: cover;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+
+    .logo img {
+      width: 200px;
+      margin-right: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #2563eb;
+    }
+
+    .btn-nav {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .btn-nav:hover {
+      background: #1e40af;
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(37, 99, 235, 0.8);
+      animation: fadeIn 2s ease-in-out;
+      background-image: linear-gradient(to bottom right, rgba(37, 99, 235, 0.8), rgba(59, 130, 246, 0.8));
+      
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      padding: 20px;
+      color: #fff;
+      animation: slideUp 1.5s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    /* Remove underline from links styled as buttons */
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* Example button styles */
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="logo">
+      
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="2.html">Products</a></li>
+        <li><a href="3.html">About Us</a></li>
+        <li><a href="4.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="btn-nav" onclick="window.location.href='2.html'">
+  Buy Now
+</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Reliable Databases for Growth</h1>
+      <h3>99% Accurate, Verified Data</h3>
+      <p>We sell college databases. Get access to authentic, updated business databases that drive real results. Trusted by thousands of businesses for accurate data and secure transactions.</p>
+      <div class="btns">
+  <!-- Buy Now opens a new page -->
+  <a href="2.html" class="btn btn-primary">Buy Now</a>
+
+  <!-- Sample Data downloads file -->
+  <a href="files/sample-data.xlsx" class="btn btn-secondary" download>Sample Data</a>
+</div>
+    </div>
+  </section>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Choose DataNexus?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f9fafb;
+      color: #333;
+    }
+
+    .section {
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #111827;
+    }
+
+    /* Feature Boxes */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto 60px;
+    }
+
+    .feature-box {
+      background: #fff;
+      padding: 55px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .feature-box i {
+      font-size: 40px;
+      color: #0d6efd;
+      margin-bottom: 15px;
+    }
+
+    .feature-box p {
+      font-weight: 600;
+      color: #1f2937;
+      font-size: 1rem;
+    }
+
+    /* Stats Bar */
+    .stats {
+      background: #0d6efd;
+      color: #fff;
+      padding: 50px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-top: 8px;
+      color: #e0e7ff;
+    }
+
+    /* About Text */
+    .about {
+      padding: 70px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about h3 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #111827;
+    }
+
+    .about p {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .stars {
+      font-size: 1.3rem;
+      color: #facc15; /* gold */
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      color: #1f2937;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #f3f4f6;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Why Choose Section -->
+  <section class="section">
+    <h2>Why Choose DataNexus?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <i class="fa-solid fa-check-circle"></i>
+        <p>99% Accurate Data</p>
+      </div>
+      <div class="feature-box">
+        <i class="fa-solid fa-handshake"></i>
+        <p>Trusted by Businesses</p>
+      </div>
+      <div class="feature-box">
+        <i class="fa-solid fa-shield-halved"></i>
+        <p>Secure UPI Payments</p>
+      </div>
+      <div class="feature-box">
+        <i class="fa-solid fa-bolt"></i>
+        <p>Fast Email Delivery</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <div class="stats">
+    <div>
+      <div class="stat">99%</div>
+      <span>Data Accuracy</span>
+    </div>
+    <div>
+      <div class="stat">500+</div>
+      <span>Satisfied Clients</span>
+    </div>
+    <div>
+      <div class="stat">24/7</div>
+      <span>Support Available</span>
+    </div>
+    <div>
+      <div class="stat">100%</div>
+      <span>Secure Payments</span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="about">
+    <h3>Authentic Data for Business Growth</h3>
+    <p>We provide authentic, updated data for business growth with a focus on accuracy and reliability. Our verified databases help businesses connect with the right prospects and drive meaningful results.</p>
+    <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐ Rated 5/5 by our clients</div>
+    <button class="btn">Learn More About Us</button>
+  </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataTrust</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    /* CTA Section */
+    .cta {
+      text-align: center;
+      padding: 60px 20px;
+      background: #f5f7fa;
+    }
+
+    .cta h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      font-size: 16px;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 25px;
+    }
+
+    .cta button {
+      background-color: #0066ff;
+      color: #fff;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 102, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .cta button:hover {
+      background-color: #0052cc;
+    }
+
+    /* Footer */
+    .footer {
+      background: #fff;
+      padding: 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-top: 1px solid #ddd;
+    }
+
+    .footer-col {
+      flex: 1;
+      margin: 20px;
+      min-width: 200px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo img {
+      width: 180px;
+      height: 60px;
+    }
+
+    .footer-logo h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .footer p {
+      font-size: 14px;
+      color: #555;
+      margin: 8px 0;
+    }
+
+    .footer h4 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer ul li {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .footer ul li a {
+      text-decoration: none;
+      color: #555;
+      transition: color 0.3s;
+    }
+
+    .footer ul li a:hover {
+      color: #0066ff;
+    }
+
+    /* Copyright */
+    .footer-bottom {
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      color: #555;
+      border-top: 1px solid #ddd;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CTA Section -->
+  <section class="cta">
+  <h2>Ready to Boost Your Business?</h2>
+  <p>Join thousands of businesses who trust DataTrust for their data needs. 
+     Get started today with our verified college databases.</p>
+  
+  <a href="2.html" class="btn">View Our Products</a>
+</section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="Logo">
+          
+        </div>
+        <p>Trusted Data Provider</p>
+        <p>Providing authentic, verified business databases for growth.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Order Now</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li>99% Accurate Data</li>
+          <li>Secure UPI Payments</li>
+          <li>Fast Email Delivery</li>
+          <li>24/7 Support</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>📞 +91 7845032288</li>
+          <li>📧 datanexus.in@gmail.com</li>
+          <li>💬 WhatsApp Support</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 DataNexus. All rights reserved. Trusted Data Provider.
+    </div>
+  </footer>
+
+</body>
+</html>
+
+
