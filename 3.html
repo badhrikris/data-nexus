@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - DataNexus</title>
-  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
@@ -13,6 +12,7 @@
       padding: 0;
       background: #fff;
       color: #333;
+      line-height: 1.6;
     }
 
     /* Navbar */
@@ -20,7 +20,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
+      padding: 15px 20px;
       background: #fff;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: sticky;
@@ -28,16 +28,12 @@
       z-index: 1000;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      font-size: 20px;
-      font-weight: bold;
+    .logo img {
+      height: 45px;
     }
 
-    .logo img {
-      width: 200px;
-      margin-right: 8px;
+    nav {
+      display: flex;
     }
 
     nav ul {
@@ -57,8 +53,7 @@
       font-weight: 500;
     }
 
-    nav ul li a:hover,
-    nav ul li a.active {
+    nav ul li a:hover {
       color: #007bff;
     }
 
@@ -69,9 +64,48 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      white-space: nowrap;
     }
 
-    /* Hero / Banner */
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 65px;
+        right: 0;
+        background: #fff;
+        width: 200px;
+        display: none;
+        flex-direction: column;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Hero */
     .about-hero {
       text-align: center;
       background: linear-gradient(to right, #1976d2, #0d47a1);
@@ -80,7 +114,7 @@
     }
 
     .about-hero h1 {
-      font-size: 36px;
+      font-size: 32px;
       margin-bottom: 10px;
     }
 
@@ -89,14 +123,14 @@
       color: #e3f2fd;
     }
 
-    /* Mission Section */
+    /* Mission */
     .mission {
       text-align: center;
       padding: 60px 20px;
     }
 
     .mission h2 {
-      font-size: 28px;
+      font-size: 26px;
       margin-bottom: 20px;
     }
 
@@ -104,7 +138,6 @@
       max-width: 800px;
       margin: 0 auto 40px;
       font-size: 16px;
-      line-height: 1.6;
       color: #555;
     }
 
@@ -136,214 +169,77 @@
       margin-bottom: 15px;
     }
 
-    .card h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
+    /* Achievements */
+    .achievements {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(to right, #f5fbff, #f6fffa);
     }
 
-    .card p {
+    .achievements h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .achievements-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .achievement {
+      width: 150px;
+    }
+
+    .achievement .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .achievement .icon i {
+      font-size: 32px;
+      color: #0066ff;
+    }
+
+    .achievement h3 {
+      font-size: 22px;
+      color: #0066ff;
+      margin: 10px 0;
+    }
+
+    .achievement p {
       font-size: 14px;
       color: #555;
-      line-height: 1.5;
     }
 
-    /* Footer */
-    footer {
-      background: #0d47a1;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <header>
-    <div class="logo">
-      <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="logo">
-      
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="2.html">Products</a></li>
-        <li><a href="3.html">About Us</a></li>
-        <li><a href="4.html">Contact</a></li>
-      </ul>
-    </nav>
-    <a href="buy.html" class="buy-btn">Buy Now</a>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="about-hero">
-    <h1>About DataTrust</h1>
-    <p>Your trusted partner for authentic, verified business data</p>
-  </section>
-
-  <!-- Mission Section -->
-  <section class="mission">
-    <h2>Our Mission</h2>
-    <p>We provide authentic, updated data for business growth with an unwavering focus on accuracy and reliability. 
-       Our mission is to empower businesses with the verified information they need to make informed decisions, 
-       connect with the right prospects, and drive meaningful growth.</p>
-
-    <div class="mission-cards">
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-check-circle"></i></div>
-        <h3>Accuracy First</h3>
-        <p>We ensure 99% data accuracy through rigorous verification processes and regular updates.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-        <h3>Reliability</h3>
-        <p>Our databases are trusted by thousands of businesses for their critical growth initiatives.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-        <h3>Focused Approach</h3>
-        <p>We specialize in business databases that deliver real, measurable results for our clients.</p>
-      </div>
-    </div>
-  </section>
-
-
-<!-- Our Achievements Section -->
-<section class="achievements">
-  <h2>Our Achievements</h2>
-  <div class="achievements-container">
-    <div class="achievement">
-      <div class="icon">
-        <i class="fas fa-award"></i>
-      </div>
-      <h3>99%</h3>
-      <p>Data Accuracy</p>
-    </div>
-
-    <div class="achievement">
-      <div class="icon">
-        <i class="fas fa-users"></i>
-      </div>
-      <h3>5000+</h3>
-      <p>Happy Clients</p>
-    </div>
-
-    <div class="achievement">
-      <div class="icon">
-        <i class="fas fa-shield-alt"></i>
-      </div>
-      <h3>24/7</h3>
-      <p>Support</p>
-    </div>
-
-    <div class="achievement">
-      <div class="icon">
-        <i class="fas fa-bolt"></i>
-      </div>
-      <h3>100%</h3>
-      <p>Secure</p>
-    </div>
-  </div>
-</section>
-
-<!-- FontAwesome for icons -->
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-
-<style>
-.achievements {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(to right, #f5fbff, #f6fffa);
-}
-
-.achievements h2 {
-  font-size: 32px;
-  margin-bottom: 50px;
-  font-weight: bold;
-}
-
-.achievements-container {
-  display: flex;
-  justify-content: center;
-  gap: 80px;
-  flex-wrap: wrap;
-}
-
-.achievement {
-  text-align: center;
-}
-
-.achievement .icon {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 25px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.achievement .icon i {
-  font-size: 42px;
-  color: #0066ff;
-}
-
-.achievement h3 {
-  font-size: 28px;
-  color: #0066ff;
-  margin: 12px 0;
-  font-weight: bold;
-}
-
-.achievement p {
-  font-size: 18px;
-  color: #555;
-}
-</style>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DataTrust</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      line-height: 1.6;
-      background: #fff;
-    }
-
-    /* Our Story Section */
+    /* Story Section */
     .story-section {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 80px 100px;
+      padding: 60px 20px;
       gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
     }
 
     .story-text {
       flex: 1;
+      min-width: 280px;
     }
 
     .story-text h2 {
-      font-size: 28px;
-      font-weight: bold;
+      font-size: 26px;
       margin-bottom: 20px;
-    }
-
-    .story-text p {
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: #555;
     }
 
     .story-text ul {
@@ -356,7 +252,6 @@
       font-size: 16px;
       display: flex;
       align-items: center;
-      color: #333;
     }
 
     .story-text ul li i {
@@ -365,18 +260,17 @@
     }
 
     .choose-box {
-      flex: 0.8;
+      flex: 1;
+      min-width: 280px;
       background: #fff;
-      border: 1px solid #eaeaea;
+      border: 1px solid #eee;
       border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     .choose-box h3 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .choose-item {
@@ -394,77 +288,25 @@
       border-radius: 50%;
     }
 
-    .choose-item h4 {
-      font-size: 16px;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .choose-item p {
-      margin: 2px 0 0;
-      font-size: 14px;
-      color: #555;
-    }
-
     /* Footer */
     footer {
-      background: #ffffff;
-      padding: 60px 100px;
+      background: #f9f9f9;
+      padding: 40px 20px;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 40px;
-      color: #000000;
+      gap: 20px;
     }
 
-    .footer-logo {
-      flex: 1;
-    }
-
-    .footer-logo h2 {
-      font-size: 22px;
-      font-weight: bold;
+    .footer-logo img {
+      height: 45px;
       margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-logo h2 i {
-      color: #0066ff;
-      margin-right: 10px;
-    }
-
-    .footer-logo p {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .footer-column {
-      flex: 1;
     }
 
     .footer-column h4 {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-column ul li {
-      margin-bottom: 12px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .footer-column ul li i {
-      margin-right: 8px;
-      color: #0066ff;
-    }
-    /* Copyright */
     .footer-bottom {
       text-align: center;
       padding: 15px;
@@ -477,83 +319,113 @@
 </head>
 <body>
 
-  <!-- Our Story Section -->
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="logo">
+    </div>
+    <i class="fas fa-bars menu-toggle"></i>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="2.html">Products</a></li>
+        <li><a href="3.html" class="active">About Us</a></li>
+        <li><a href="4.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="buy.html" class="buy-btn">Buy Now</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <h1>About DataTrust</h1>
+    <p>Your trusted partner for authentic, verified business data</p>
+  </section>
+
+  <!-- Mission -->
+  <section class="mission">
+    <h2>Our Mission</h2>
+    <p>We provide authentic, updated data for business growth with an unwavering focus on accuracy and reliability...</p>
+
+    <div class="mission-cards">
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+        <h3>Accuracy First</h3>
+        <p>We ensure 99% data accuracy...</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Reliability</h3>
+        <p>Our databases are trusted by thousands...</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Focused Approach</h3>
+        <p>We specialize in business databases...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="achievements">
+    <h2>Our Achievements</h2>
+    <div class="achievements-container">
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-award"></i></div>
+        <h3>99%</h3>
+        <p>Data Accuracy</p>
+      </div>
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-users"></i></div>
+        <h3>5000+</h3>
+        <p>Happy Clients</p>
+      </div>
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>24/7</h3>
+        <p>Support</p>
+      </div>
+      <div class="achievement">
+        <div class="icon"><i class="fas fa-bolt"></i></div>
+        <h3>100%</h3>
+        <p>Secure</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
   <section class="story-section">
     <div class="story-text">
       <h2>Our Story</h2>
-      <p>
-        Founded with the vision of providing businesses with reliable, accurate data,
-        DataTrust has grown to become a trusted name in the industry. We understand
-        that quality data is the foundation of successful business decisions.
-      </p>
-      <p>
-        Our team of data specialists works tirelessly to ensure that every piece
-        of information in our databases is verified, updated, and relevant. We
-        believe in building long-term relationships with our clients based on
-        trust and consistent value delivery.
-      </p>
+      <p>Founded with the vision of providing businesses...</p>
       <ul>
-        <li><i class="fas fa-check-circle"></i> Manual verification of all data points</li>
-        <li><i class="fas fa-check-circle"></i> Regular database updates and maintenance</li>
-        <li><i class="fas fa-check-circle"></i> 24/7 customer support and assistance</li>
+        <li><i class="fas fa-check-circle"></i> Manual verification</li>
+        <li><i class="fas fa-check-circle"></i> Regular updates</li>
+        <li><i class="fas fa-check-circle"></i> 24/7 support</li>
       </ul>
     </div>
-
     <div class="choose-box">
       <h3>Why Choose Us?</h3>
-      <div class="choose-item">
-        <i class="fas fa-bullseye"></i>
-        <div>
-          <h4>Precision</h4>
-          <p>Every data point is manually verified for accuracy</p>
-        </div>
-      </div>
-      <div class="choose-item">
-        <i class="fas fa-shield-alt"></i>
-        <div>
-          <h4>Security</h4>
-          <p>Secure payment methods and data protection</p>
-        </div>
-      </div>
-      <div class="choose-item">
-        <i class="fas fa-headset"></i>
-        <div>
-          <h4>Support</h4>
-          <p>Dedicated support team available 24/7</p>
-        </div>
-      </div>
+      <div class="choose-item"><i class="fas fa-bullseye"></i><div><h4>Precision</h4><p>Manually verified data</p></div></div>
+      <div class="choose-item"><i class="fas fa-shield-alt"></i><div><h4>Security</h4><p>Secure payments</p></div></div>
+      <div class="choose-item"><i class="fas fa-headset"></i><div><h4>Support</h4><p>Available 24/7</p></div></div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
     <div class="footer-logo">
-       <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="DataNexus" style="height:48px">
-      
+      <img src="image/Screenshot_2025-08-26_125051-removebg-preview (1).png" alt="DataNexus">
       <p>Trusted Data Provider</p>
-      <p>Providing authentic, verified business databases for growth.</p>
     </div>
-
     <div class="footer-column">
       <h4>Quick Links</h4>
-      <ul>
-        <li>Home</li>
-        <li>Products</li>
-        <li>About Us</li>
-        <li>Order Now</li>
-      </ul>
+      <ul><li>Home</li><li>Products</li><li>About Us</li><li>Order Now</li></ul>
     </div>
-
     <div class="footer-column">
       <h4>Services</h4>
-      <ul>
-        <li>99% Accurate Data</li>
-        <li>Secure UPI Payments</li>
-        <li>Fast Email Delivery</li>
-        <li>24/7 Support</li>
-      </ul>
+      <ul><li>99% Accurate Data</li><li>Secure Payments</li><li>Fast Delivery</li><li>24/7 Support</li></ul>
     </div>
-
     <div class="footer-column">
       <h4>Contact Us</h4>
       <ul>
@@ -562,14 +434,15 @@
         <li><i class="fab fa-whatsapp"></i> WhatsApp Support</li>
       </ul>
     </div>
-
-    
   </footer>
-  <div class="footer-bottom">
-      © 2025 DataNexus. All rights reserved. Trusted Data Provider.
-    </div>
-  </footer>
+  <div class="footer-bottom">© 2025 DataNexus. All rights reserved.</div>
 
-
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
